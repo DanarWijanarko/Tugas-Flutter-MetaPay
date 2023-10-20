@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tugas4_layout/components/my_appbar.dart';
 import 'package:tugas4_layout/components/my_btn_navbar.dart';
+import 'package:tugas4_layout/pages/history.dart';
 import 'package:tugas4_layout/pages/home.dart';
 import 'package:tugas4_layout/pages/setting.dart';
 import 'package:tugas4_layout/theme.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.plusJakartaSansTextTheme(
           Theme.of(context).textTheme,
         ),
-        scaffoldBackgroundColor: white,
+        scaffoldBackgroundColor: const Color(0xfff3eff9),
       ),
     );
   }
@@ -47,9 +48,7 @@ class _MyLayoutState extends State<MyLayout> {
     Text(
       'Index 2: Bayar',
     ),
-    Text(
-      'Index 3: Riwayat',
-    ),
+    MyHistoryPage(),
     MySettingsPage(),
   ];
 
@@ -62,12 +61,28 @@ class _MyLayoutState extends State<MyLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(
-        img: const AssetImage("assets/img/goji.png"),
-        name: "Jamas Hilman",
-        icon: Icons.notifications_none,
-        onPressNotifyBtn: () {},
-      ),
+      appBar: _selectedIndex != 4
+          ? MyAppBar(
+              img: const AssetImage("assets/img/goji.png"),
+              name: "Jamas Hilman",
+              icon: Icons.notifications_none,
+              onPressNotifyBtn: () {},
+            )
+          : AppBar(
+              elevation: 0,
+              backgroundColor: white,
+              toolbarHeight: 75,
+              title: Center(
+                child: Text(
+                  "Settings",
+                  style: TextStyle(
+                    color: dark,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 30,
+                  ),
+                ),
+              ),
+            ),
       body: SingleChildScrollView(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

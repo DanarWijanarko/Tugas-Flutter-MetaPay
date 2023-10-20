@@ -21,7 +21,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     return SafeArea(
       child: AppBar(
         elevation: 0,
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: white,
         toolbarHeight: 75,
         flexibleSpace: Padding(
           padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20),

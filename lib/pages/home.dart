@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tugas4_layout/components/my_financial_record.dart';
 import 'package:tugas4_layout/components/my_menu_button.dart';
-import 'package:tugas4_layout/components/my_transaction_History.dart';
 import 'package:tugas4_layout/theme.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -125,14 +125,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         // Menu Button End
 
-        // Riwayat Transaksi Start
+        // Catatan Keuangan Start
         Padding(
           padding: const EdgeInsets.only(top: 35, left: 18, right: 18),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Riwayat Transaksi",
+                "Catatan Keuangan",
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 24,
@@ -150,52 +150,76 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
-        // Riwayat Transaksi End
+        // Catatan Keuangan End
 
-        // List Riwayat Transaksi Start
+        // List Catatan Keuangan Start
         Padding(
-          padding: const EdgeInsets.only(top: 20, left: 18, right: 18),
-          child: Column(
-            children: [
-              MyTransactionHistory(
-                image: "assets/icons/request.png",
-                transaksi: "Terima Uang",
-                nama: "Raditya Adi",
-                uang: "+Rp50.000",
-                color: green,
-              ),
-              MyTransactionHistory(
-                image: "assets/icons/send.png",
-                transaksi: "Kirim Uang",
-                nama: "Danar Wijanarko",
-                uang: "-Rp500.000",
-                color: red,
-              ),
-              MyTransactionHistory(
-                image: "assets/icons/request.png",
-                transaksi: "Terima Uang",
-                nama: "Raditya Adi",
-                uang: "+Rp50.000",
-                color: green,
-              ),
-              MyTransactionHistory(
-                image: "assets/icons/request.png",
-                transaksi: "Terima Uang",
-                nama: "Raditya Adi",
-                uang: "+Rp50.000",
-                color: green,
-              ),
-              MyTransactionHistory(
-                image: "assets/icons/request.png",
-                transaksi: "Terima Uang",
-                nama: "Raditya Adi",
-                uang: "+Rp50.000",
-                color: green,
-              ),
-            ],
+          padding: const EdgeInsets.only(top: 25, left: 18, right: 18),
+          child: Card(
+            shadowColor: blue,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            color: white,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    MyFinancialRecord(
+                      icon: Icons.arrow_downward,
+                      jenis: "Pemasukan",
+                      jumlah: "+Rp4.200.000",
+                      iconColor: green,
+                    ),
+                    Container(
+                      width: 0.5,
+                      height: 120,
+                      color: gray,
+                    ),
+                    MyFinancialRecord(
+                      icon: Icons.arrow_upward,
+                      jenis: "Pengeluaran",
+                      jumlah: "-Rp. 4.383.000",
+                      iconColor: red,
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 0.5,
+                  color: gray,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Selisih",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 17,
+                          color: gray,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        "-Rp183.000",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 20,
+                          color: red,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
-        )
-        // List Riwayat Transaksi End
+        ),
+        // List Catatan Keuangan End
+        const SizedBox(height: 35),
       ],
     );
   }
